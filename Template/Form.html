@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up</title>
+    {% load static %}
+    <link rel="stylesheet" href="{%static 'style.css' %}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+<body>
+    <div class="parent-container">
+        <div class="msg">
+            {% for message in messages %}
+                <p>{{message}}</p>
+            {% endfor %}
+        </div>
+        <div class="container">
+            <h1>Sign up</h1>
+            <form id="form" action="register" method="post"  enctype="multipart/form-data">
+                {% csrf_token %}
+                <p class="input-box"> 
+                    <input type="text" required name="first_name" id="name" placeholder="First Name">
+                    <i class='bx bxs-user'></i>
+                </p>
+                <p class="input-box"> 
+                    <input type="text" name="last_name" id="name" placeholder="Last Name">
+                    <i class='bx bxs-user'></i>
+                </p>
+                <p class="input-box"> 
+                    <input type="email" name="email" id="email" required placeholder="email">
+                    <i class='bx bxl-gmail' ></i>
+                </p>
+                <p class="input-box">
+                    <input type="tel" name="phone" id="phone" required placeholder="Phone Number">
+                    <i class='bx bxs-phone' ></i>
+                </p>
+                <div class="gender">Gender:
+                    <input  class="radio" type="radio" name="gender" id="male" value="male">
+                    <p>Male </p>
+                    <input class="radio" type="radio" name="gender" id="female" value="Female">
+                    <p>Female</p>
+                </div>
+                <p class="input-box">
+                    <input type="password" name="password" id="password" required placeholder="Password">
+                    <i class='bx bxs-lock-alt' ></i>
+                </p>
+                <p class="input-box">
+                    <input type="password" name="confirm_password" id="confirm_password" required placeholder="Confirm Password">
+                    <i class='bx bxs-lock-alt' ></i>
+                </p>
+                <div class="checkbox">
+                    <input type="checkbox" name="checkbox" id="check">
+                    <label class="text" for="checkbox">I hereby confirm that the details provided above are correct</label>
+                </div>
+                
+                <br>
+                <button type="submit">Register</button>
+            </form>
+        </div>
+    </div>
+    <script src="{% static 'form.js' %}"></script>
+</body>
+</html>

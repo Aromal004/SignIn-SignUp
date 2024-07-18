@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>API Table</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    <table  border="1">
+        <thead >
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+            </tr>
+        </thead>
+        <tbody id="myTable"></tbody>
+    </table>
+    <br>
+    <hr>
+    <h3>ADD DATA</h3>
+    First Name:<input type="text" id="first_name">
+    Last Name:<input type="text" id="last_name">
+    Email:<input type="text" id="email">
+    Phone:<input type="text" id="phone">
+    <button type="submit" id="submit">Add Data</button>
+    <hr>
+
+    <script>
+        const apiUrl = 'http://127.0.0.1:8000/get-data';
+
+        $.ajax({
+            method: 'GET',
+            url: apiUrl,
+            success: function(data){
+                buildTable(data);
+            },
+            error: function(error){
+                alert('Error fetching data', error);
+            }
+        });
+
+        function buildTable(data) {
+            const table = document.getElementById('myTable');
+            table.innerHTML = ''; 
+
+            data.forEach(item => {
+                const row = `<tr>
+                        <td>${item.first_name}</td>
+                        <td>${item.last_name}</td>
+                        <td>${item.email}</td>
+                        <td>${item.phone}</td>
+                    </tr>`;
+                    table.innerHTML += row;
+                });
+        }
+
+        $('#submit').on('click', function(){
+            var data={
+                first_name: $('#first_name').val(),
+                last_name: $('#last_name').val(),
+                email: $('#email').val(),
+                phone: $('#phone').val()
+            };
+            
+            $.ajax({
+                method: 'POST',
+                url: 'http://127.0.0.1:8000/addData',
+                data: data,
+                success: function(data){
+                    const table = document.getElementById('myTable');
+                    const row = `<tr>
+                        <td>${first_name}</td>
+                        <td>${last_name}</td>
+                        <td>${email}</td>
+                        <td>${phone}</td>
+                    </tr>`;
+                    table.innerHTML += row;
+                }
+            });
+        });
+        
+    </script>
+</body>
+</html>

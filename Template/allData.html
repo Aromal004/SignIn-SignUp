@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>All Data</title>
+</head>
+<body>
+    <h2>ALL DATA</h2>
+    <table border="1">
+        <tr>
+            <th>ID</th>   
+            <th>Phone Number</th>  
+            <th>Email</th>   
+            <th>First Name</th>   
+            <th>Last Name</th>              
+        </tr>
+        {% for item in items %}
+        <tr>
+            <td>{{ item.id }}</td>   
+            <td>{{ item.phone }}</td>  
+            <td>{{ item.email }}</td>   
+            <td>{{ item.first_name }}</td>   
+            <td>{{ item.last_name }}</td>              
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
