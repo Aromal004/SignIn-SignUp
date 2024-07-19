@@ -92,3 +92,55 @@ a{
 a:hover{
     color: rgb(56, 131, 56);
 }
+
+@media (max-width: 600px) {
+    .container {
+        width: 95%;
+        padding: 15px;
+        border-radius: 20px;
+        margin-top: 10px;
+    }
+
+    input {
+        padding: 10px 15px 10px 35px;
+        border-radius: 25px;
+        height: 45px;
+    }
+
+    .form-group {
+        margin: 10px 0;
+    }
+
+    button {
+        height: 30px;
+        border-radius: 25px;
+    }
+
+    .parent-container {
+        width:85%;
+        font-size: 18px;
+        padding: 5px 10px;
+    }
+
+    .msg {
+        font-size: 14px;
+    }
+
+    a,
+    span {
+        font-size: 13px;
+    }
+
+    .input-wrapper i {
+        font-size: 18px;
+        left: 10px;
+    }
+
+    input::placeholder {
+        font-size: 14px;
+    }
+
+    button{
+        font-size: 13px;
+    }
+}
