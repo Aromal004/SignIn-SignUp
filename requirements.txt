@@ -1,0 +1,3 @@
+django-database-url==1.0.3
+psycopg2==2.9.5
+gunicorn==20.1.0
